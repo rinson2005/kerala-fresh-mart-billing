@@ -10,56 +10,71 @@ dis=0
 member=="y"
 y=0
 
+#Allignment set up
+width=50
+ #
+item_width=20
+qty_width=8
+price_width=10
+amount_width=12
+ #
+label_width=35
+value_width=15
 
-print("=" *50)
-print("KERALA FRESH MART".center(50) + "\n" + "SMART BILLING".center(50) + "\n" + "=" *50)
 
-print(" " *50)
+print("=" *width)
+print("KERALA FRESH MART".center(50) + "\n" + "SMART BILLING".center(50) + "\n" + "=" *width)
+
+print(" " *width)
 
 print(f"Customer: {name}")
-print("-" *50)
-print(f"{'Item'}{'Qty':>21}{'Price':>14}{'Amount':>11}")
-print(f"{item}{qty:>14}{price:>14,.2f}{amount:>11,.2f}")
 
-print("-" *50)
-print(f"Amount: {amount:>42,.2f}")
+print("-" *width)
+
+print(f"{'Item':<{item_width}}{'Qty':>{qty_width}}{'Price':>{price_width}}{'Amount':>{amount_width}}")
+print(f"{item:<{item_width}}{qty:>{qty_width}}{price:>{price_width},.2f}{amount:>{amount_width},.2f}")
+
+print("-" *width) 
+
+print(f"{'Amount:':<{label_width}}{amount:>{value_width},.2f}")
 
 #Discount rate
 
 if(amount >=2000):
-  print(f"Discount rate: {'10%':>35}")
+  print(f"{'Discount rate:':<{label_width}}{'10%':>{value_width}}")
   dis=amount*.1
 elif(amount >=1000 and amount <2000):
-  print(f"Discount rate: {'5%':>34}")
+  print(f"{'Discount rate:':<{label_width}}{'5%':>{value_width}}")
   dis=amount*.05
 elif(amount >=500 and amount <1000):
-  print(f"Discount rate: {'2%':>35}")
+  print(f"{'Discount rate:':<{label_width}}{'2%':>{value_width}}")
   dis=amount*.02
 else:
-  print(f"Discount rate: {0:>34.2f}")
-print(f"Discount :{dis:>39,.2f}")
+  print(f"{'Discount rate:':<{label_width}}{'0%':>{value_width}}")
+print(f"{'Discount:':<{label_width}}{dis:>{value_width},.2f}")
 
 #Loyalty bonus
 
 if(amount >=500 and member.lower()=="y"):
   y=25
-  print(f"{'Loyalty bonus:'}{y:>35,.2f}")
+  print(f"{'Loyalty bonus:':<{label_width}}{y:>{value_width},.2f}")
+
 else:
-  print(f"{'Loyalty bonus:'}{0:>35.2f}")
+  print(f"{'Loyalty bonus:':<{label_width}}{0:>{value_width},.2f}")
 
 ta= amount-dis-y
 
-print(f"Taxable amount:{ta:>34,.2f}")
+print(f"{'Taxable amount:':<{label_width}}{ta:>{value_width},.2f}")
 
 
 gst=ta*0.05
 
-print(f"GST (5%):{gst:>40,.2f}")
+print(f"{'GST (5%):':<{label_width}}{gst:>{value_width},.2f}")
 
 total=ta+gst
 
-print(f"Grand total:{total:>37,.2f}")
-print("=" *50)
+print(f"{'Grand total:':<{label_width}}{total:>{value_width},.2f}")
+print("=" *width)
 
 #Free bag
 
